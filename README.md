@@ -1,16 +1,17 @@
 # Face-Person-Identify
 
 <img src="image.png" />
+<br/>
 <span>
 You must set the Face resource key from the portal.azure.com to the app.config in the value tag of the Key setting.
 <br/>
-  <userSettings>
-    <FaceIdentify.Properties.Settings>
-      <setting name="Key" serializeAs="String">
-        <value></value>
-      </setting>
-    </FaceIdentify.Properties.Settings>
-</userSettings>
-The endpoint is set to westus, so the key should match.
-See https://docs.microsoft.com/en-us/azure/cognitive-services/cognitive-services-apis-create-account if you don't have a Face API account yet.
+  &#x3C;userSettings&#x3E;<br/>
+    &#x3C;FaceIdentify.Properties.Settings&#x3E;<br/>
+      &#x3C;setting name=&#x22;Key&#x22; serializeAs=&#x22;String&#x22;&#x3E;<br/>
+        &#x3C;value&#x3E;&#x3C;/value&#x3E;<br/>
+      &#x3C;/setting&#x3E;<br/>
+    &#x3C;/FaceIdentify.Properties.Settings&#x3E;<br/>
+&#x3C;/userSettings&#x3E;<br/>
+The endpoint is set to westus, so the key should match.<br/>
+See https://docs.microsoft.com/en-us/azure/cognitive-services/cognitive-services-apis-create-account if you don't have a Face API account yet.<br/>
  </span>
