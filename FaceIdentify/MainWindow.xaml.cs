@@ -20,7 +20,7 @@ namespace FaceIdentify
         private const string endPoint = @"https://westus.api.cognitive.microsoft.com/";
         private const string faceImg1 = @"Img/face1.jpg";
         private const string faceImg0 = "Img/face0.jpg";//for detecting similar faces
-        private const string personGroupId = "myfriends";
+        private const string personGroupId = "my-unique-person-group";
         private Settings settings = new Settings();
         private FaceClient faceClient;
 
@@ -39,7 +39,6 @@ namespace FaceIdentify
             try
             {
                 ButtonsPanel.IsEnabled = false;
-
                 await verifyFace(faceClient);
             }
             finally
@@ -66,12 +65,16 @@ namespace FaceIdentify
                 }
             }
         }
-        private async Task personGroup(FaceClient faceClient)
+        private async Task personGroup(FaceClient faceClient, string personGroupId)
         {
 
             // Create an empty PersonGroup
-            string personGroupId = MainWindow.personGroupId;
-            await faceClient.PersonGroup.CreateAsync(personGroupId, "My Friends");
+            try
+            {
+                await faceClient.PersonGroup.CreateAsync(personGroupId, "My Friends");
+            }
+            catch (APIErrorException ex)
+            { }
         }
 
         private async Task personFace(FaceClient faceClient, string personGroupId)
@@ -158,6 +161,7 @@ namespace FaceIdentify
                 ButtonsPanel.IsEnabled = false;
 
                 ResponseLV.Items.Add("Start training");
+                await personGroup(faceClient, personGroupId);
                 await personFace(faceClient, personGroupId);
                 await personGroupTrain(faceClient, personGroupId);
                 await personGroupIdentify(faceClient, personGroupId);
