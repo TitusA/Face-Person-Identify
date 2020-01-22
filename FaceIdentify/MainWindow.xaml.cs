@@ -1,4 +1,4 @@
-﻿using FaceIdentify.Properties;
+﻿using Face.Properties;
 using Microsoft.Azure.CognitiveServices.Vision.Face;
 using Microsoft.Azure.CognitiveServices.Vision.Face.Models;
 using System;
